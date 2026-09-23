@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import StudentDashboard from './pages/StudentDashboard'
 import SupportRequest from './pages/SupportRequest'
+import Resources from './pages/Resources'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<StudentDashboard />} />
         <Route path="/support" element={<SupportRequest />} />
+        <Route path="/resources" element={<Resources />} />
         
       </Routes>
 
