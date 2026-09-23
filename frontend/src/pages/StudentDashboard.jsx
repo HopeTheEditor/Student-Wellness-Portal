@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function StudentDashboard() {
   const [request] = useState(() => {
@@ -12,11 +12,23 @@ function StudentDashboard() {
     return null
   })
 
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    localStorage.removeItem('loggedIn')
+
+    alert('You have been logged out.')
+
+    navigate('/login')
+  }
+
   return (
     <main>
       <h1>Student Dashboard</h1>
 
       <p>Welcome to your wellness dashboard.</p>
+
+      <button onClick={handleLogout}>Logout</button>
 
       <section>
         <h2>Get Support</h2>
