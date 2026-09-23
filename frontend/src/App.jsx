@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ProtectedRoute from './components/ProtectedRoute'
 
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -19,7 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<StudentDashboard />} />
+        <Route path="/dashboard" element={<ProtectedRoute> <StudentDashboard /> </ProtectedRoute>} />
         <Route path="/support" element={<SupportRequest />} />
         <Route path="/resources" element={<Resources />} />
         
