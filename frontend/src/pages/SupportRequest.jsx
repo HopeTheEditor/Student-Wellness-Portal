@@ -1,13 +1,26 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function SupportRequest() {
   const [category, setCategory] = useState('')
   const [message, setMessage] = useState('')
 
+  const navigate = useNavigate()
+
   function handleSubmit(event) {
     event.preventDefault()
 
+    const request = {
+      category: category,
+      message: message,
+      status: 'Pending'
+    }
+
+    localStorage.setItem('supportRequest', JSON.stringify(request))
+
     alert('Support request submitted!')
+
+    navigate('/dashboard')
   }
 
   return (
@@ -19,7 +32,6 @@ function SupportRequest() {
       </p>
 
       <form onSubmit={handleSubmit}>
-
         <label>Support Category</label>
 
         <br />
@@ -27,6 +39,7 @@ function SupportRequest() {
         <select
           value={category}
           onChange={(event) => setCategory(event.target.value)}
+          required
         >
           <option value="">Select a category</option>
           <option value="academic">Academic</option>
@@ -48,6 +61,7 @@ function SupportRequest() {
           onChange={(event) => setMessage(event.target.value)}
           placeholder="Describe your concern..."
           rows="6"
+          required
         />
 
         <br />
@@ -56,7 +70,6 @@ function SupportRequest() {
         <button type="submit">
           Submit Request
         </button>
-
       </form>
     </main>
   )
